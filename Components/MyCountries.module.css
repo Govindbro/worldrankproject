@@ -1,0 +1,22 @@
+.countriestable{
+    display: flex;
+    justify-content: center;
+}
+.countriestable .innertable{
+    display: flex;
+    border:1px solid #0ad6a0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.countriestable .innertable .column h1{
+    color: white;
+    background-color: #0ad6a0;
+    margin: 0;
+    padding: 10px 30px;
+    
+     
+}
+.countriestable .innertable .column p{
+    padding: 10px 30px;
+    background-color: rgb(241, 231, 231);
+}
