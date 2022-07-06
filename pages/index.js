@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Search from '../Components/Search'
 import MyCountries from '../Components/MyCountries'
 
 // for api fetching 
@@ -21,7 +20,6 @@ export default function Home({data}) {
   return (
     <div>
       <h1 className={styles.heading}>World Ranks</h1>
-      <Search/>
       <MyCountries countries={data}/>
     </div>
   )

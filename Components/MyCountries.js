@@ -1,7 +1,14 @@
 import styles from './MyCountries.module.css'
 import { useState } from 'react'
+import Searchcss from './Search.module.css'
+// get our fontawesome imports
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 // here countries is an array here 
 const MyCountries = ({countries}) => {
+    // for searching purpose 
+    const [keyword,setKeyword]=useState('');
     const [mycountry,Setmycountry]=useState(countries);
     const [nameflag,Setnameflag]=useState(0);
     const [areaflag,Setareaflag]=useState(0);
@@ -87,9 +94,19 @@ const MyCountries = ({countries}) => {
 //         </div>
 //     </div>
 //   )
-
+    const handleInputchange=(event)=>{
+        setKeyword(event.target.value.toLowerCase());
+        Setmycountry(countries.filter(country=>country.name.common.toLowerCase().includes(keyword)));
+    }
     return (
         <div className={styles.countrytable_outer}>
+         <div className={Searchcss.container}>
+           <div className={Searchcss.searchbar}>
+                <FontAwesomeIcon icon={faSearch}/>
+                <input placeholder="Search any Place" onChange={(e)=>handleInputchange(e)}/>
+           </div>
+            
+        </div>
             <div className={styles.countrytable_inner}>
                 <div className={styles.head}>
                     <button onClick={()=>ordername(countries)}>Name {
@@ -103,15 +120,18 @@ const MyCountries = ({countries}) => {
                         areaflag==0?<i className={`${styles.arrow} ${styles.down}`}></i>:<i className={`${styles.arrow} ${styles.up}`}></i>
                     }</button>
                 </div>
-                <div className={styles.content}>
+                <div  className={styles.content}>
+                {mycountry.length==0?<h1>No Country of this name!! </h1>:<div>
                     {mycountry.map((country)=>
-                       <div className={styles.country_row}>
+                       <div key={country.flags.png} className={styles.country_row}>
                        <div><p>{country.name.common}</p></div>
                         <div className={styles.country_flag}><img src={country.flags.png}></img></div>
                         <div><p>{country.population}</p></div>
                         <div><p>{country.area}</p></div>
                        </div>
                     )}
+                </div>}
+                
                 </div>
             </div>
         </div>
