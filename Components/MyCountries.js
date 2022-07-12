@@ -1,9 +1,12 @@
 import styles from './MyCountries.module.css'
 import { useState } from 'react'
 import Searchcss from './Search.module.css'
+// importing useRouter 
+import { useRouter } from 'next/router';
 // get our fontawesome imports
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 // here countries is an array here 
 const MyCountries = ({countries}) => {
@@ -13,6 +16,7 @@ const MyCountries = ({countries}) => {
     const [nameflag,Setnameflag]=useState(0);
     const [areaflag,Setareaflag]=useState(0);
     const [populationflag,Setpopulationflag]=useState(0);
+    const router=useRouter();
 
     // makeing a funtion for sorting the population 
 
@@ -123,7 +127,7 @@ const MyCountries = ({countries}) => {
                 <div  className={styles.content}>
                 {mycountry.length==0?<h1>No Country of this name!! </h1>:<div>
                     {mycountry.map((country)=>
-                       <div key={country.flags.png} className={styles.country_row}>
+                       <div key={country.flags.png} className={styles.country_row} onClick={()=>router.push({pathname:`/CountryPage/${country.ccn3}`})}>
                        <div><p>{country.name.common}</p></div>
                         <div className={styles.country_flag}><img src={country.flags.png}></img></div>
                         <div><p>{country.population}</p></div>

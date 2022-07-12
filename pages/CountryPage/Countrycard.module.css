@@ -1,0 +1,17 @@
+.countryCardOuter{
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.countrycard_inner{
+    background-color: rgb(219, 140, 140);
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    /* height: 100vh; */
+}
+.countrycard_inner h1{
+    font-size: 49px;
+}

@@ -74,6 +74,10 @@
     display: flex;
     justify-content: center;
 }
+.country_row:hover{
+    cursor: pointer;
+    background-color: #bef5e7;
+}
 .arrow {
     border: solid white;
     border-width: 0 3px 3px 0;
